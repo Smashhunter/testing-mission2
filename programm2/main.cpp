@@ -1,11 +1,12 @@
-#include <string>
-#include <iostream>
-#include "lib.hpp"
+#include "server.hpp"
 
-
-int main(){
-    std::string test = "";
-    my_lib::processString(test);
-    std::cout << "Project Name: " << PROJECT_NAME_STR << std::endl;
-    return 0;
+int main() {
+    try {
+        Server server(SOCKET_PATH);
+        server.start();
+    } catch (const std::exception& e) {
+        std::cerr << "Fatal server error: " << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }

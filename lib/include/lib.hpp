@@ -24,13 +24,13 @@ namespace my_lib {
     int calculateSum(const std::string& input);
 
     /**
-     * @brief Проверяет условия длины строки и кратности суммы её цифр.
+     * @brief Проверяет условия длины строки и кратности 32-м.
      * @details Возвращает true, если длина строки строго больше 2 символов 
-     * и сумма её цифр (рассчитанная через calculateSum) кратна 32.
+     * и полученная сумма от calculateSum кратна 32.
      * 
      * @param input Входная строка для проверки.
      * @return true, если оба условия выполнены, иначе false.
      */
-    bool checkLength(const std::string& input);
+    bool checkLength(const std::string &input) noexcept;
 
 }

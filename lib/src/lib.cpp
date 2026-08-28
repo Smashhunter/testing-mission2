@@ -1,6 +1,7 @@
 #include"lib.hpp"
 #include <cctype>
 #include <algorithm>
+#include <stdexcept>
 
 void my_lib::processString(std::string &input)
 {
@@ -30,7 +31,12 @@ int my_lib::calculateSum(const std::string &input)
     return sum;
 }
 
-bool my_lib::checkLength(const std::string &input)
+bool my_lib::checkLength(const std::string &input) noexcept
 {
-    return input.length() > 2 && calculateSum(input) % 32 == 0;
+    if(input.length() <= 2) return false;
+    try{
+        return std::stoi(input) % 32 == 0;
+    } catch (...){
+        return false;
+    }
 }

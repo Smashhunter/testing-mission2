@@ -21,4 +21,6 @@ public:
     Socket& operator=(Socket&& other) noexcept;
 
     int getFd() const noexcept;
+    bool isConnected() const noexcept;
+    void disconnect() noexcept;
 };

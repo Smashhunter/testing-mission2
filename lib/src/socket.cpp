@@ -2,14 +2,23 @@
 
 Socket::Socket(int fd)
     : fd_(fd) 
-{
-    if (fd_ < 0) throw std::runtime_error("Invalid socket descriptor");
-}
+{}
 
 Socket::~Socket()
 {
-    if (fd_ >= 0) {
+    disconnect();
+}
+
+bool Socket::isConnected() const noexcept
+{
+    return fd_ != -1;
+}
+
+void Socket::disconnect() noexcept
+{
+    if (fd_ != -1) {
         close(fd_);
+        fd_ = -1;
     }
 }
 
@@ -20,7 +29,7 @@ Socket::Socket(Socket &&other) noexcept
 Socket &Socket::operator=(Socket &&other) noexcept
 {
     if (this != &other) {
-        if (fd_ >= 0) close(fd_);
+        disconnect();
         fd_ = std::exchange(other.fd_, -1);
     }
     return *this;

@@ -24,3 +24,4 @@ Then you can run programs:
 ./programm1/programm1
 ./programm2/programm2 
 ```
+To exit any programs use `Ctrl + D` or `Ctrl + C`.

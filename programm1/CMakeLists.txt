@@ -1,6 +1,8 @@
 project(programm1)
 
 set(SOURCE_FILES
+    src/app.cpp
+    src/thread-safe-buffer.cpp
 )
 
 add_executable(programm1

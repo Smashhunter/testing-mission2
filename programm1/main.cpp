@@ -1,11 +1,13 @@
-#include <string>
+#include "app.hpp"
 #include <iostream>
-#include "lib.hpp"
 
-
-int main(){
-    std::string test = "";
-    my_lib::processString(test);
-    std::cout << "Project Name: " << PROJECT_NAME_STR << std::endl;
-    return 0;
+int main() {
+    try {
+        App app(SERVER_SOCK);
+        app.run(); // Главный поток становится Потоком 1
+    } catch (const std::exception& e) {
+        std::cerr << "Fatal client error: " << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }

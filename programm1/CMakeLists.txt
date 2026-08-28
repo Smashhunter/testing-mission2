@@ -18,4 +18,5 @@ target_link_libraries(programm1 PRIVATE my_lib)
 
 target_compile_definitions(programm1 PRIVATE
     PROJECT_NAME_STR="${PROJECT_NAME}"
+    SERVER_SOCK="${SERVER_PATH}"
 )
